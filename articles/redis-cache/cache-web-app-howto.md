@@ -137,6 +137,11 @@ For more information about this package, see the [EntityFramework](https://www.n
 	    public TeamContext()
 	        : base("TeamContext")
 	    {
+	    	Database.SetInitializer(new TeamInitializer());
+		if (!Database.Exists())
+		{
+		    Database.Initialize(true);
+		}
 	    }
 	
 	    public DbSet<Team> Teams { get; set; }
